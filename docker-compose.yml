@@ -1,5 +1,5 @@
 services:
-  steam-stream:
+  docker-linux-steam=broadcast:
     build: .
     env_file:
       - .env

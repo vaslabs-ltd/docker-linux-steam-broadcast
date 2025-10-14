@@ -1,7 +1,7 @@
-# Steam-Stream
+# Dockerized Stream Broadcast
 
 ## Description
-Steam-Stream is a Dockerized application that streams video files to Steam using FFmpeg.
+A Dockerized application that streams video files to Steam using FFmpeg.
 
 ## Usage
 
