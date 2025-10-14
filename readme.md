@@ -1,7 +1,8 @@
 # Dockerized Steam Broadcast
 
 ## Description
-A Dockerized application that broadcasts video files to Steam using FFmpeg.
+
+A Dockerized application that broadcasts video files to Steam using FFmpeg. Meant to be used in DIY situations where you'd want to broadcast your pre-recorded videos from a Linux machine/server!
 
 ## Usage
 
