@@ -6,15 +6,16 @@ A Dockerized application that broadcasts video files to Steam using FFmpeg. Mean
 
 ## Usage
 
+- Place your video files in the `videos` directory.
+- Place your playlist file as `playlist.txt` in the project root. 
+- Set the `STEAM_KEY` environment variable in a `.env` file.
+
 Build and start the service using Docker Compose:
 
 ```bash
 docker compose up --build
 ```
 
-- Place your video files in the `videos` directory.
-- Place your playlist file as `playlist.txt` in the project root. 
-- Set the `STEAM_KEY` environment variable in a `.env` file.
 
 ## Configuration
 - To get your Steam key, follow the instructions at [Steamworks Documentation](https://partner.steamgames.com/doc/store/broadcast/setting_up).
