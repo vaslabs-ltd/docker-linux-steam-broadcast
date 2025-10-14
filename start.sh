@@ -11,16 +11,10 @@ done < /playlist.txt
 echo "Found ${#files[@]} files in playlist."
 
 # Preprocess all videos
+old_fps=-1
 for file in "${files[@]}"; do
   if [ ! -f "$file" ]; then
     echo "File $file not found, skipping..."
-    continue
-  fi
-
-  flv="${file%.*}.flv"
-  if [ -f "$flv" ]; then
-    echo "$flv already exists, skipping conversion."
-    flv_files+=("$flv")
     continue
   fi
 
@@ -28,7 +22,20 @@ for file in "${files[@]}"; do
 
   # Compute FPS and -g 
   fps=$(ffprobe -v 0 -of csv=p=0 -select_streams v:0 -show_entries stream=avg_frame_rate "$file")
-  fps=$(echo "$fps" | awk -F/ '{printf "%.2f", $1/$2}')
+  fps=$(echo "$fps" | awk -F/ '{printf "%.2f", $1/$2}')  
+  if [ "$old_fps" != -1 ] && [ "$(printf "%.2f" "$old_fps")" != "$(printf "%.2f" "$fps")" ]; then
+    echo "Error: All videos must have the same frame rate. $file has $fps fps, previous was $old_fps fps."
+    exit 1
+  fi
+  old_fps=$fps
+  
+  flv="${file%.*}.flv"
+  if [ -f "$flv" ]; then
+    echo "$flv already exists, skipping conversion."
+    flv_files+=("$flv")
+    continue
+  fi
+  
   g=$(printf "%.0f" $(echo "$fps * 2" | bc -l))
   echo "Detected FPS: $fps, setting -g to $g"
 
