@@ -1,4 +1,4 @@
-# Dockerized Stream Broadcast
+# Dockerized Steam Broadcast
 
 ## Description
 A Dockerized application that streams video files to Steam using FFmpeg.
