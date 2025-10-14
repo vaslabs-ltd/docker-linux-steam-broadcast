@@ -1,0 +1,10 @@
+services:
+  steam-stream:
+    build: .
+    env_file:
+      - .env
+    volumes:
+      - ./videos:/videos
+      - ./playlist.txt:/playlist.txt
+    stdin_open: true
+    tty: true
