@@ -30,4 +30,4 @@ subdir/video2.mkv
 
 ## Credits
 
-The containarised script is containarised with the base image of [linuxserver/docker-ffmpeg](https://github.com/linuxserver/docker-ffmpeg/) which is licensed under [GNU General Public License v3.0](https://github.com/linuxserver/docker-ffmpeg/blob/master/LICENSE)
+The containarised script is packaged using the base image of [linuxserver/docker-ffmpeg](https://github.com/linuxserver/docker-ffmpeg/) which is licensed under [GNU General Public License v3.0](https://github.com/linuxserver/docker-ffmpeg/blob/master/LICENSE)
