@@ -23,10 +23,10 @@ for file in "${files[@]}"; do
   # Compute FPS and -g 
   fps=$(ffprobe -v 0 -of csv=p=0 -select_streams v:0 -show_entries stream=avg_frame_rate "$file")
   fps=$(echo "$fps" | awk -F/ '{printf "%.2f", $1/$2}')  
-  if [ "$old_fps" != -1 ] && [ "$(printf "%.2f" "$old_fps")" != "$(printf "%.2f" "$fps")" ]; then
-    echo "Error: All videos must have the same frame rate. $file has $fps fps, previous was $old_fps fps."
-    exit 1
-  fi
+  # if [ "$old_fps" != -1 ] && [ "$(printf "%.2f" "$old_fps")" != "$(printf "%.2f" "$fps")" ]; then
+  #   echo "Error: All videos must have the same frame rate. $file has $fps fps, previous was $old_fps fps."
+  #   exit 1
+  # fi
   old_fps=$fps
   
   flv="${file%.*}.flv"
