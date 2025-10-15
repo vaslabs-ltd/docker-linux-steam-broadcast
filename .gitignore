@@ -1,1 +1,4 @@
 .env
+*.mp4
+*.flv
+playlist.txt
