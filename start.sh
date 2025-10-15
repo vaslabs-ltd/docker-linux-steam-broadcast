@@ -67,4 +67,12 @@ fi
 
 echo "Preprocessing done. Starting playlist loop..."
 
-ffmpeg -re -f concat -stream_loop -1 -safe 0 -i /playlist_concat.txt -c copy -f flv "rtmp://ingest-rtmp.broadcast.steamcontent.com/app/$STEAM_KEY"
+STEAM_URL="rtmp://ingest-rtmp.broadcast.steamcontent.com/app/$STEAM_KEY"
+
+ffmpeg -re \
+  -f concat -safe 0 -stream_loop -1 -i "$concat_file" \
+  -f fifo -fifo_format flv \
+  -attempt_recovery 1 -max_recovery_attempts 0 -recover_any_error 1 -recovery_wait_time 5 \
+  -tag:v 7 -tag:a 10 -flags +global_header \
+  -c copy \
+  -f flv "$STEAM_URL"

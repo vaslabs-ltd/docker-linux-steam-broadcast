@@ -1,5 +1,5 @@
 services:
-  docker-linux-steam=broadcast:
+  docker-linux-steam-broadcast:
     build: .
     env_file:
       - .env
@@ -8,3 +8,4 @@ services:
       - ./playlist.txt:/playlist.txt
     stdin_open: true
     tty: true
+    restart: unless-stopped
